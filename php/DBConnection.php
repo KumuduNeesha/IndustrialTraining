@@ -1,4 +1,11 @@
-<?php  
-$dbcon=mysqli_connect("localhost","root","");  
-mysqli_select_db($dbcon,"acl-portal");
-?>
+<?php      
+    $host = "localhost";  
+    $user = "root";  
+    $password = '';  
+    $db_name = "acl-portal";  
+      
+    $con = mysqli_connect($host, $user, $password, $db_name);  
+    if(mysqli_connect_errno()) {  
+        die("Failed to connect with MySQL: ". mysqli_connect_error());  
+    }  
+?> 
