@@ -209,295 +209,322 @@
         </div>
     </div>
 
-    <div id="Employers" class="container" style="padding-top: 5%;">
-        <div class="row" style="text-align: center; color: #4C4B4B;">
-            <div class="col" style="text-align: left;">
-                <h2>User Management</h2>
-            </div>
-            <div class="col" style="text-align: right;">
-                <a href="./manage-user.php" class="btn btn-info" style="color: #fff;"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Users Details</a>
+    <div id="Employers" class="container" style="padding-top: 2%;">
+        <div class="card border-info">
+            <div class="card-header bg-info" style="color: #fff;">ACL Electronics - User Management</div>
+            <div class="card-body text-info">
+                <div class="row" style="text-align: center; color: #4C4B4B;">
+                    <div class="col" style="text-align: left;">
+                        <h2>User Management</h2>
+                    </div>
+                    <div class="col" style="text-align: right;">
+                        <a href="./manage-user.php" class="btn btn-info" style="color: #fff;"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Users Details</a>
 
-                <a href="./AddNewUser.html" class="btn btn-info" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New User</a>
-            </div>
-        </div>
-        <div class="row" style="padding-top: 2%;">
-            <div class="section">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div style="max-height: 250px; overflow-x: auto;">
-                            <table id="tabEmp" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Employee ID</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">User Role</th>
-                                        <th scope="col">Age</th>
-                                        <th scope="col">Gender</th>
-                                        <th scope="col">Residance</th>
-                                        <th scope="col">Salary</th>
-                                        <th scope="col">Phone Number</th>
-                                        <th scope="col">NIC (username)</th>
-                                        <th scope="col">Password</th>
-                                        <th scope="col">Registration Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $connection = mysqli_connect("localhost", "root", "", "acl-portal");
+                        <a href="./AddNewUser.html" class="btn btn-info" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New User</a>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 2%;">
+                    <div class="section">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div style="max-height: 250px; overflow-x: auto;">
+                                    <table id="tabEmp" class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Employee ID</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">User Role</th>
+                                                <th scope="col">Age</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">Residance</th>
+                                                <th scope="col">Salary</th>
+                                                <th scope="col">Phone Number</th>
+                                                <th scope="col">NIC (username)</th>
+                                                <th scope="col">Password</th>
+                                                <th scope="col">Registration Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $connection = mysqli_connect("localhost", "root", "", "acl-portal");
 
-                                    // Check connection 
-                                    if (mysqli_connect_errno()) {
-                                        echo "Database connection failed.";
-                                    }
+                                            // Check connection 
+                                            if (mysqli_connect_errno()) {
+                                                echo "Database connection failed.";
+                                            }
 
-                                    $query = "SELECT * FROM users ORDER BY worker_id DESC;";
-                                    $res = mysqli_query($connection, $query);
-                                    while ($row = mysqli_fetch_array($res)) {
-                                        $RegNumber = "ACL-" . $row["worker_id"];
-                                        echo "<tr>";
-                                        echo "<td>";
-                                        echo $RegNumber;
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["fullname"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["role"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["age"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["gender"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["residence"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["salary"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["phone"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["nic_id"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["password_id"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["register_date"];
-                                        echo "</td>";
-                                    }
-                                    mysqli_close($connection);
-                                    ?>
-                                </tbody>
-                            </table>
+                                            $query = "SELECT * FROM users ORDER BY worker_id DESC;";
+                                            $res = mysqli_query($connection, $query);
+                                            while ($row = mysqli_fetch_array($res)) {
+                                                $RegNumber = "ACL-" . $row["worker_id"];
+                                                echo "<tr>";
+                                                echo "<td>";
+                                                echo $RegNumber;
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["fullname"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["role"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["age"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["gender"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["residence"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["salary"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["phone"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["nic_id"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["password_id"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["register_date"];
+                                                echo "</td>";
+                                            }
+                                            mysqli_close($connection);
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-    <div id="Defects" class="container" style="padding-top: 5%;">
-        <div class="row" style="text-align: center; color: #4C4B4B;">
-            <div class="col" style="text-align: left;">
-                <h2>Defects Management</h2>
-            </div>
-            <div class="col" style="text-align: right;">
-                <!-- <button type="button" id="btnExport" onclick="Export()" class="btn btn-info"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export as Report</button> -->
-            </div>
-        </div>
-        <div class="row" style="padding-top: 2%;">
-            <div class="section">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div style="max-height: 250px; overflow-x: auto;">
-                            <table id="tabDef" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Defect ID</th>
-                                        <th scope="col">Reason</th>
-                                        <th scope="col">User Name</th>
-                                        <th scope="col">Machine Name</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Quantity</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $connection = mysqli_connect("localhost", "root", "", "acl-portal");
+    <div id="Defects" class="container" style="padding-top: 2%;">
+        <div class="card border-info">
+            <div class="card-header bg-info" style="color: #fff;">ACL Electronics - Defects Management</div>
+            <div class="card-body text-info">
+                <div class="row" style="text-align: center; color: #4C4B4B;">
+                    <div class="col" style="text-align: left;">
+                        <h2>Defects Management</h2>
+                    </div>
+                    <div class="col" style="text-align: right;">
+                        <!-- <button type="button" id="btnExport" onclick="Export()" class="btn btn-info"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export as Report</button> -->
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 2%;">
+                    <div class="section">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div style="max-height: 250px; overflow-x: auto;">
+                                    <table id="tabDef" class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Defect ID</th>
+                                                <th scope="col">Reason</th>
+                                                <th scope="col">User Name</th>
+                                                <th scope="col">Machine Name</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Product</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $connection = mysqli_connect("localhost", "root", "", "acl-portal");
 
-                                    // Check connection 
-                                    if (mysqli_connect_errno()) {
-                                        echo "Database connection failed.";
-                                    }
+                                            // Check connection 
+                                            if (mysqli_connect_errno()) {
+                                                echo "Database connection failed.";
+                                            }
 
-                                    $query = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id ORDER BY defect_id DESC";
-                                    $res = mysqli_query($connection, $query);
-                                    while ($row = mysqli_fetch_array($res)) {
-                                        $defNumber = "Def-" . $row["defect_id"];
-                                        echo "<tr>";
-                                        echo "<td>";
-                                        echo $defNumber;
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["reason"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["fullname"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["machine_name"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["date"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["name"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["itemQty"];
-                                        echo "</td>";
-                                    }
-                                    mysqli_close($connection);
-                                    ?>
-                                </tbody>
-                            </table>
+                                            $query = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty, d.status FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id ORDER BY defect_id DESC";
+                                            $res = mysqli_query($connection, $query);
+                                            while ($row = mysqli_fetch_array($res)) {
+                                                $defNumber = "Def-" . $row["defect_id"];
+                                                echo "<tr>";
+                                                echo "<td>";
+                                                echo $defNumber;
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["reason"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["fullname"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["machine_name"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["date"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["name"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["itemQty"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["status"];
+                                                echo "</td>";
+                                            }
+                                            mysqli_close($connection);
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-    <div id="Machines" class="container" style="padding-top: 5%;">
-        <div class="row" style="text-align: center; color: #4C4B4B;">
-            <div class="col" style="text-align: left;">
-                <h2>Machines</h2>
-            </div>
-            <div class="col" style="text-align: right;">
-                <a href="./manage-machine.php" class="btn btn-info" style="color: #fff;"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Machine Details</a>
+    <div id="Machines" class="container" style="padding-top: 2%;">
+        <div class="card border-info">
+            <div class="card-header bg-info" style="color: #fff;">ACL Electronics - Machines Management</div>
+            <div class="card-body text-info">
+                <div class="row" style="text-align: center; color: #4C4B4B;">
+                    <div class="col" style="text-align: left;">
+                        <h2>Machines</h2>
+                    </div>
+                    <div class="col" style="text-align: right;">
+                        <a href="./manage-machine.php" class="btn btn-info" style="color: #fff;"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Machine Details</a>
 
-                <a href="./AddNewMachine.html" class="btn btn-info" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New Machine</a>
-            </div>
-        </div>
-        <div class="row" style="padding-top: 2%;">
-            <div class="section">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div style="max-height: 250px; overflow-x: auto;">
-                            <table id="tabMachine" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Machine ID</th>
-                                        <th scope="col">Unit Name</th>
-                                        <th scope="col">Machine Type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $connection = mysqli_connect("localhost", "root", "", "acl-portal");
+                        <a href="./AddNewMachine.html" class="btn btn-info" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New Machine</a>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 2%;">
+                    <div class="section">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div style="max-height: 250px; overflow-x: auto;">
+                                    <table id="tabMachine" class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Machine ID</th>
+                                                <th scope="col">Unit Name</th>
+                                                <th scope="col">Machine Type</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $connection = mysqli_connect("localhost", "root", "", "acl-portal");
 
-                                    // Check connection 
-                                    if (mysqli_connect_errno()) {
-                                        echo "Database connection failed.";
-                                    }
+                                            // Check connection 
+                                            if (mysqli_connect_errno()) {
+                                                echo "Database connection failed.";
+                                            }
 
-                                    $query = "SELECT * FROM machine;";
-                                    $res = mysqli_query($connection, $query);
-                                    while ($row = mysqli_fetch_array($res)) {
-                                        $MachineNumber = "ACL-MHN-" . $row["machine_id"];
-                                        echo "<tr>";
-                                        echo "<td>";
-                                        echo $MachineNumber;
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["machine_name"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["machine_type"];
-                                        echo "</td>";
-                                    }
-                                    mysqli_close($connection);
-                                    ?>
-                                </tbody>
-                            </table>
+                                            $query = "SELECT * FROM machine;";
+                                            $res = mysqli_query($connection, $query);
+                                            while ($row = mysqli_fetch_array($res)) {
+                                                $MachineNumber = "ACL-MHN-" . $row["machine_id"];
+                                                echo "<tr>";
+                                                echo "<td>";
+                                                echo $MachineNumber;
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["machine_name"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["machine_type"];
+                                                echo "</td>";
+                                            }
+                                            mysqli_close($connection);
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-    <div id="Logs" class="container" style="padding-top: 5%;">
-        <div class="row" style="text-align: center; color: #4C4B4B;">
-            <div class="col" style="text-align: left;">
-                <h2>Logs Management</h2>
-            </div>
-            <div class="col" style="text-align: right;">
-                <!-- <a href="./AddNewUser.html" class="btn btn-info" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New User</a> -->
-            </div>
-        </div>
-        <div class="row" style="padding-top: 2%;">
-            <div class="section">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div style="max-height: 250px; overflow-x: auto;">
-                            <table id="tabLogs" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">LOG ID</th>
-                                        <th scope="col">Employee Name</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Product Code</th>
-                                        <th scope="col">Machine Name</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $connection = mysqli_connect("localhost", "root", "", "acl-portal");
+    <div id="Logs" class="container" style="padding-top: 2%;">
+        <div class="card border-info">
+            <div class="card-header bg-info" style="color: #fff;">ACL Electronics - Logs Management</div>
+            <div class="card-body text-info">
+                <div class="row" style="text-align: center; color: #4C4B4B;">
+                    <div class="col" style="text-align: left;">
+                        <h2>Logs Management</h2>
+                    </div>
+                    <div class="col" style="text-align: right;">
+                        <!-- <a href="./AddNewUser.html" class="btn btn-info" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New User</a> -->
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 2%;">
+                    <div class="section">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div style="max-height: 250px; overflow-x: auto;">
+                                    <table id="tabLogs" class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">LOG ID</th>
+                                                <th scope="col">Employee Name</th>
+                                                <th scope="col">Product Name</th>
+                                                <th scope="col">Product Code</th>
+                                                <th scope="col">Machine Name</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $connection = mysqli_connect("localhost", "root", "", "acl-portal");
 
-                                    // Check connection 
-                                    if (mysqli_connect_errno()) {
-                                        echo "Database connection failed.";
-                                    }
+                                            // Check connection 
+                                            if (mysqli_connect_errno()) {
+                                                echo "Database connection failed.";
+                                            }
 
-                                    $query = "SELECT l.log_id, u.fullname, p.name, p.product_code, m.machine_name, l.qty, l.date FROM logs l, users u, products p, machine m WHERE l.worker_id = u.worker_id && l.product_id = p.product_id && l.machine_id = m.machine_id ORDER BY log_id DESC;";
-                                    $res = mysqli_query($connection, $query);
-                                    while ($row = mysqli_fetch_array($res)) {
-                                        $LogNumber = "LOG-" . $row["log_id"];
-                                        echo "<tr>";
-                                        echo "<td>";
-                                        echo $LogNumber;
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["fullname"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["name"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["product_code"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["machine_name"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["qty"];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $row["date"];
-                                        echo "</td>";
-                                    }
-                                    mysqli_close($connection);
-                                    ?>
-                                </tbody>
-                            </table>
+                                            $query = "SELECT l.log_id, u.fullname, p.name, p.product_code, m.machine_name, l.qty, l.date FROM logs l, users u, products p, machine m WHERE l.worker_id = u.worker_id && l.product_id = p.product_id && l.machine_id = m.machine_id ORDER BY log_id DESC;";
+                                            $res = mysqli_query($connection, $query);
+                                            while ($row = mysqli_fetch_array($res)) {
+                                                $LogNumber = "LOG-" . $row["log_id"];
+                                                echo "<tr>";
+                                                echo "<td>";
+                                                echo $LogNumber;
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["fullname"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["name"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["product_code"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["machine_name"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["qty"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["date"];
+                                                echo "</td>";
+                                            }
+                                            mysqli_close($connection);
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

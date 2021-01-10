@@ -1,5 +1,6 @@
 <?php      
-    include('./DBConnection.php');  
+    include('./DBConnection.php'); 
+
     $username = $_POST['user'];  
     $password = $_POST['pass'];  
       
@@ -22,6 +23,7 @@
             $result = mysqli_query($con, $query);  
             while ($row = mysqli_fetch_array($result)) {
                 $UserType = $row["role"];
+                $myusername = $row["fullname"];
             }
 
             if ($UserType == "Admin") {
@@ -32,6 +34,11 @@
             }
             if ($UserType == "Supervisor") {
                 header("Location: ../pages/supervisor/index.php");
+            }
+            if ($UserType == "Intern Trainee" || $UserType == "Minor Employee") {
+                session_start();
+                $_SESSION['login_user'] = $myusername;
+                header("Location: ../pages/Workers/index.php");
             }
         }  
         else{  
