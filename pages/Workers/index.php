@@ -24,18 +24,25 @@ include('../../php/Session.php');
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #005DAA; padding: 0px;">
         <div class="container">
-            <a class="navbar-brand" style="font-weight: 700;">ACL Electronics</a>
+            <a class="navbar-brand mb-0 h1"><img src="../../favicon.ico"> ACL Electronics</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 60%;">
+                <ul class="nav navbar-nav ml-auto">
                     <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only"></span></a> -->
-                    <a class="nav-item nav-link">Login User Name: <?php echo $login_session; ?></a>
-                    <a class="nav-item nav-link active" href="../../php/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
-                </div>
+                    <li class="nav-item">
+                        <!-- <a class="nav-item nav-link">Login User Name: <?php echo $login_session; ?> </a> -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link active" href="./profile.php"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link active" href="../../php/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -52,6 +59,47 @@ include('../../php/Session.php');
         </div>
         <div class="row">
             <div class="col-md-6">
+                <div class="card" style="border-color: #005DAA;">
+                    <div class="card-header" style="color: #fff; background-color: #005DAA;">
+                        User Profile
+                    </div>
+                    <div class="card-body text-info">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="../../images/avatar.png" style="max-height: 147.5px;">
+                            </div>
+                            <div class="col">
+                                <table class="table table-sm">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Full Name</th>
+                                            <td><?php echo $login_session; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Job Title</th>
+                                            <td><?php echo $login_session_role; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Phone Number</th>
+                                            <td><?php echo $login_session_Phone; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">NIC</th>
+                                            <td><?php echo $login_session_NIC; ?></td>
+                                        </tr>
+                                </table>
+                            </div>
+                            <div class="col-sm-4">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a style="width: 100%;" class="btn btn-primary" href="./profile.php" role="button"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update Details</a></li>
+                                    <li class="list-group-item"><a style="width: 100%;" class="btn btn-primary" href="https://mail.google.com/mail/u/0/?tab=wm&ogbl#inbox" role="button"><i class="fa fa-envelope" aria-hidden="true"></i> My Mail Box</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
                 <div class="card text-center text-white bg-warning">
                     <div class="card-header">
                         <h3>Logs</h3>
@@ -93,7 +141,7 @@ include('../../php/Session.php');
                     </div> -->
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="card text-center text-white bg-danger">
                     <div class="card-header">
                         <h3>Defects</h3>
@@ -141,8 +189,8 @@ include('../../php/Session.php');
     </div>
 
     <div id="Logs" class="container" style="padding-top: 2%;">
-        <div class="card border-info">
-            <div class="card-header bg-info" style="color: #fff;">ACL Electronics - Logs Management</div>
+        <div class="card" style="border-color: #005DAA;">
+            <div class="card-header" style="color: #fff; background-color: #005DAA;">ACL Electronics - Logs Management</div>
             <div class="card-body text-info">
                 <div class="row" style="text-align: center; color: #4C4B4B;">
                     <div class="col" style="text-align: left;">
@@ -150,8 +198,8 @@ include('../../php/Session.php');
                     </div>
                     <div class="col" style="text-align: right;">
                         <!-- <input type="button" id="btnExport" style="color: #fff;" class="btn btn-info" value="Export as Excel" onclick="Export()" /> -->
-                        <button type="button" onclick="addLog()" style="color: #fff;" class="btn btn-info">Add New Logs</button>
-                        <button type="button" onclick="ManageLog()" style="color: #fff;" class="btn btn-info">Manage My Logs</button>
+                        <button type="button" onclick="addLog()" style="color: #fff;" class="btn btn-primary">Add New Logs</button>
+                        <button type="button" onclick="ManageLog()" style="color: #fff;" class="btn btn-primary">Manage My Logs</button>
                     </div>
                 </div>
                 <div class="row" style="padding-top: 2%;">
@@ -214,12 +262,11 @@ include('../../php/Session.php');
                 </div>
             </div>
         </div>
-
     </div>
 
     <div id="Defects" class="container" style="padding-top: 2%;">
-        <div class="card border-info">
-            <div class="card-header bg-info" style="color: #fff;">
+        <div class="card" style="border-color: #005DAA;">
+            <div class="card-header" style="color: #fff; background-color: #005DAA;">
                 <div class="row">
                     <div class="col-sm-4">
                         ACL Electronics - Defects Management
@@ -283,8 +330,8 @@ include('../../php/Session.php');
                         <h2>Defects Management</h2>
                     </div>
                     <div class="col" style="text-align: right;">
-                        <button type="button" onclick="addDefect()" style="color: #fff;" class="btn btn-info">Add New Defects</button>
-                        <button type="button" onclick="ManageDefect()" style="color: #fff;" class="btn btn-info">Manage My Defects</button>
+                        <button type="button" onclick="addDefect()" style="color: #fff;" class="btn btn-primary">Add New Defects</button>
+                        <button type="button" onclick="ManageDefect()" style="color: #fff;" class="btn btn-primary">Manage My Defects</button>
 
                         <!-- <input type="button" id="btnExport" style="color: #fff;" class="btn btn-info" value="Export as Excel" onclick="Export()" /> -->
                     </div>
@@ -353,14 +400,13 @@ include('../../php/Session.php');
                 </div>
             </div>
         </div>
-
     </div>
 
 
 
     <div style="padding-top: 5%;">
     </div>
-    <div style="background-color: #0dcaf0; text-align: center; margin: 0px; padding: 2%;">
+    <div style="background-color: #005DAA; text-align: center; margin: 0px; padding: 2%;">
         <p style="color: #fff; font-size: 13px;">ACL Electronics Sri Lanka 2021 - All Rights Reserved</p>
     </div>
 
