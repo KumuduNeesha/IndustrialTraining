@@ -6,7 +6,7 @@ include('../../php/Session.php');
 
 <head lang="en">
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>ACL > <?php echo $login_session; ?> | Profile - ACL Electronics Logs Portal</title>
 
     <!-- CSS only -->
@@ -17,13 +17,12 @@ include('../../php/Session.php');
     <link href="../../assets/custom css/scrollbar.css" rel="stylesheet">
 
     <!-- JavaScript Bundle with Popper -->
-    <script src="../assets/js/table2excel.js" type="text/javascript"></script>
+    <script src="../../assets/js/table2excel.js" type="text/javascript"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #005DAA; padding: 0px;">
         <div class="container">
             <a class="navbar-brand mb-0 h1"><img src="../../favicon.ico"> ACL Electronics</a>
@@ -53,7 +52,7 @@ include('../../php/Session.php');
     <div id="Profile" class="container" style="padding-top: 2%;">
         <div class="card" style="border-color: #005DAA;">
             <div class="card-header" style="color: #fff; background-color: #005DAA;">ACL Electronics - Profile Management</div>
-            <div class="card-body text-info">
+            <div class="card-body text-primary">
                 <div class="row" style="text-align: center; color: #4C4B4B;">
                     <div class="col" style="text-align: center;">
                         <h2>Profile Management</h2>
@@ -74,7 +73,7 @@ include('../../php/Session.php');
                                 </div>
                             </div>
                             <div class="col-md-9">
-                                <form action="../../php/UserProfileUpdate.php" method="POST" id="profileForm">
+                                <form action="../php/UserProfileUpdate.php" method="POST" id="profileForm">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -150,7 +149,7 @@ include('../../php/Session.php');
                                         </div>
                                     </div>
                                 </form>
-                                <form action="../../php/ResetPassword.php" method="POST" id="passwordForm" hidden>
+                                <form action="../php/ResetPassword.php" method="POST" id="passwordForm" hidden>
                                     <div class="form-group">
                                         <label for="formGroupExampleInput">Current Password</label>
                                         <input type="text" class="form-control" id="current" name="current" placeholder="Current Password" required>

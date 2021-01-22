@@ -19,19 +19,28 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #005DAA; padding: 0px;">
         <div class="container">
-            <a class="navbar-brand" style="font-weight: 700;">ACL Electronics</a>
+            <a class="navbar-brand mb-0 h1"><img src="../../favicon.ico"> ACL Electronics</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link">Welcome Supervisor!</a>
-                    <a class="nav-item nav-link active" href="./index.php">Dashboard <span class="sr-only"></span></a>
-                    <a class="nav-item nav-link active" href="../../index.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 60%;">
+                <ul class="nav navbar-nav ml-auto">
+                    <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only"></span></a> -->
+                    <li class="nav-item">
+                        <!-- <a class="nav-item nav-link">Login User Name: <?php echo $login_session; ?> </a> -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link active" href="./index.php"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link active" href="./profile.php"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link active" href="../../php/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -39,17 +48,17 @@
     <div id="Defects" class="container">
         <div class="row" style="padding-top: 2%;">
             <div class="section">
-                <div class="card border-info">
-                    <div class="card-header bg-info" style="color: #fff;">ACL Electronics - Unauthorized Defects</div>
-                    <div class="card-body text-info">
+                <div class="card border-primary">
+                    <div class="card-header bg-primary" style="color: #fff;">ACL Electronics - Unauthorized Defects</div>
+                    <div class="card-body text-primary">
                         <div class="row" style="text-align: center; color: #4C4B4B;">
                             <div class="col" style="text-align: left;">
                                 <h2>Unauthorized Defects</h2>
                             </div>
                             <div class="col" style="text-align: right;">
-                                <input type="button" id="btnExport" style="color: #fff;" class="btn btn-info" value="Export as Excel" onclick="Export()" />
-                                <!-- <button type="button" id="btnExport" onclick="Export()" style="color: #fff;" class="btn btn-info"><i class="fa fa-cloud-download" aria-hidden="true"></i> Export as Report</button> -->
-                                <!-- <button type="button" id="btnExport" onclick="Manage()" style="color: #fff;" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Defects</button> -->
+                                <input type="button" id="btnExport" style="color: #fff;" class="btn btn-primary" value="Export as Excel" onclick="Export()" />
+                                <!-- <button type="button" id="btnExport" onclick="Export()" style="color: #fff;" class="btn btn-primary"><i class="fa fa-cloud-download" aria-hidden="true"></i> Export as Report</button> -->
+                                <!-- <button type="button" id="btnExport" onclick="Manage()" style="color: #fff;" class="btn btn-primary"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Defects</button> -->
                             </div>
                         </div>
                         <div class="row">
@@ -123,17 +132,17 @@
     <div id="Defects" class="container">
         <div class="row" style="padding-top: 2%;">
             <div class="section">
-                <div class="card border-info">
-                    <div class="card-header bg-info" style="color: #fff;">ACL Electronics - Authorized Defects</div>
-                    <div class="card-body text-info">
+                <div class="card border-primary">
+                    <div class="card-header bg-primary" style="color: #fff;">ACL Electronics - Authorized Defects</div>
+                    <div class="card-body text-primary">
                         <div class="row" style="text-align: center; color: #4C4B4B;">
                             <div class="col" style="text-align: left;">
                                 <h2>Authorized Defects</h2>
                             </div>
                             <div class="col" style="text-align: right;">
-                                <input type="button" id="btnExport" style="color: #fff;" class="btn btn-info" value="Export as Excel" onclick="Export()" />
-                                <!-- <button type="button" id="btnExport" onclick="Export()" style="color: #fff;" class="btn btn-info"><i class="fa fa-cloud-download" aria-hidden="true"></i> Export as Report</button> -->
-                                <!-- <button type="button" id="btnExport" onclick="Manage()" style="color: #fff;" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Defects</button> -->
+                                <input type="button" id="btnExport" style="color: #fff;" class="btn btn-primary" value="Export as Excel" onclick="Export()" />
+                                <!-- <button type="button" id="btnExport" onclick="Export()" style="color: #fff;" class="btn btn-primary"><i class="fa fa-cloud-download" aria-hidden="true"></i> Export as Report</button> -->
+                                <!-- <button type="button" id="btnExport" onclick="Manage()" style="color: #fff;" class="btn btn-primary"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Defects</button> -->
                             </div>
                         </div>
                         <div class="row">
@@ -210,9 +219,9 @@
                 <h2>Manage Authorization</h2>
             </div>
             <div class="col" style="text-align: right;">
-                <!-- <input type="button" id="btnExport" style="color: #fff;" class="btn btn-info" value="Export as Excel" onclick="Export()" /> -->
-                <!-- <button type="button" id="btnExport" onclick="Export()" style="color: #fff;" class="btn btn-info"><i class="fa fa-cloud-download" aria-hidden="true"></i> Export as Report</button> -->
-                <!-- <button type="button" id="btnExport" onclick="Manage()" style="color: #fff;" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Defects</button> -->
+                <!-- <input type="button" id="btnExport" style="color: #fff;" class="btn btn-primary" value="Export as Excel" onclick="Export()" /> -->
+                <!-- <button type="button" id="btnExport" onclick="Export()" style="color: #fff;" class="btn btn-primary"><i class="fa fa-cloud-download" aria-hidden="true"></i> Export as Report</button> -->
+                <!-- <button type="button" id="btnExport" onclick="Manage()" style="color: #fff;" class="btn btn-primary"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Defects</button> -->
             </div>
         </div>
         <div class="row" style="padding-top: 2%;">
@@ -247,7 +256,7 @@
 
     <div style="padding-top: 5%;">
     </div>
-    <div style="background-color: #0dcaf0; text-align: center; margin: 0px; padding: 2%;">
+    <div style="background-color: #005DAA; text-align: center; margin: 0px; padding: 2%;">
         <p style="color: #fff; font-size: 13px;">ACL Electronics Sri Lanka 2021 - All Rights Reserved</p>
     </div>
 

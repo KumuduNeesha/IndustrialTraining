@@ -4,6 +4,7 @@ $username = "root";
 $password = "";
 $dbname = "acl-portal";
 
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -22,10 +23,9 @@ $sql = "UPDATE `users` SET `fullname`='$name',`age`='$age',`residence`='$residen
 
 if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";
-    header("Location: ../pages/Workers/profile.php");
+    header("Location: ./logout.php");
 } else {
     echo "Error updating record: " . $conn->error;
 }
 
 $conn->close();
-?>

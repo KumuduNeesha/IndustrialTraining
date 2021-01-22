@@ -1,12 +1,12 @@
 <?php
-include('../../php/Session.php');
+include('../php/Session.php');
 ?>
 
 <html>
 
 <head lang="en">
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>ACL > <?php echo $login_session; ?> | Profile - ACL Electronics Logs Portal</title>
 
     <!-- CSS only -->
@@ -14,7 +14,7 @@ include('../../php/Session.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link href="../../assets/custom css/scrollbar.css" rel="stylesheet">
+    <link href="../assets/custom css/scrollbar.css" rel="stylesheet">
 
     <!-- JavaScript Bundle with Popper -->
     <script src="../assets/js/table2excel.js" type="text/javascript"></script>
@@ -23,10 +23,9 @@ include('../../php/Session.php');
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #005DAA; padding: 0px;">
         <div class="container">
-            <a class="navbar-brand mb-0 h1"><img src="../../favicon.ico"> ACL Electronics</a>
+            <a class="navbar-brand mb-0 h1"><img src="../favicon.ico"> ACL Electronics</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,7 +42,7 @@ include('../../php/Session.php');
                         <a class="nav-item nav-link active" href="./profile.php"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-item nav-link active" href="../../php/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
+                        <a class="nav-item nav-link active" href="../php/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
                     </li>
                 </ul>
             </div>
@@ -65,7 +64,7 @@ include('../../php/Session.php');
                             <div class="col-md-3">
                                 <div class="row">
                                     <div class="col-md-12" style="text-align: center;">
-                                        <img src="../../images/avatar.png" alt="Profile">
+                                        <img src="../images/avatar.png" alt="Profile">
                                     </div>
                                     <div class="col-md-12" style="padding-top: 5%;">
                                         <button type="button" style="width: 100%;" class="btn btn-outline-primary" id="passwordFormBtn" onclick="passwordFormBtn()">Update Password</button>
@@ -74,7 +73,7 @@ include('../../php/Session.php');
                                 </div>
                             </div>
                             <div class="col-md-9">
-                                <form action="../../php/UserProfileUpdate.php" method="POST" id="profileForm">
+                                <form action="../php/UserProfileUpdate.php" method="POST" id="profileForm">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -150,7 +149,7 @@ include('../../php/Session.php');
                                         </div>
                                     </div>
                                 </form>
-                                <form action="../../php/ResetPassword.php" method="POST" id="passwordForm" hidden>
+                                <form action="../php/ResetPassword.php" method="POST" id="passwordForm" hidden>
                                     <div class="form-group">
                                         <label for="formGroupExampleInput">Current Password</label>
                                         <input type="text" class="form-control" id="current" name="current" placeholder="Current Password" required>

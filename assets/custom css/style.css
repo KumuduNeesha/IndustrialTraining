@@ -33,21 +33,22 @@ html {
   
   .wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: column; 
     justify-content: center;
     width: 100%;
     min-height: 100%;
     padding: 20px;
+    padding-right: 10%;
   }
   
   #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: #fff;
+    background: #005DAA;
     padding: 30px;
     width: 90%;
-    max-width: 450px;
+    max-width: 350px;
     position: relative;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
@@ -58,7 +59,7 @@ html {
   #formFooter {
     background-color: #f6f6f6;
     border-top: 1px solid #dce8f1;
-    padding: 25px;
+    padding: 5px;
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
@@ -115,7 +116,7 @@ html {
     transform: scale(0.95);
   }
   
-  input[type=text] {
+  input[type=text], input[type=password] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;

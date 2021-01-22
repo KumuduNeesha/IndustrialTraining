@@ -1,9 +1,13 @@
+<?php
+include('../php/Session.php');
+?>
+
 <html>
 
 <head lang="en">
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <title>ACL > Welcome Administrator - ACL Electronics Logs Portal</title>
+    <title>ACL > Welcome <?php echo $login_session; ?> - ACL Electronics Logs Portal</title>
 
     <!-- CSS only -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,23 +24,46 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #005DAA; padding: 0px;">
         <div class="container">
-            <a class="navbar-brand" style="font-weight: 700;">ACL Electronics</a>
+            <a class="navbar-brand mb-0 h1"><img src="../favicon.ico"> ACL Electronics</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 60%;">
+                <ul class="nav navbar-nav ml-auto">
                     <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only"></span></a> -->
-                    <a class="nav-item nav-link">Welcome Admin!</a>
-                    <a class="nav-item nav-link active" href="../index.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
-                </div>
+                    <li class="nav-item">
+                        <!-- <a class="nav-item nav-link">Login User Name: <?php echo $login_session; ?> </a> -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link active" href="./index.php"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link active" href="./profile.php"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link active" href="../php/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container" style="padding-top: 5%;">
+    <div class="container" style="padding-top: 2%;">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Welcome Back <?php echo $login_session; ?>!</h3>
+                <h5>Role: <?php echo $login_session_role; ?></h5>
+            </div>
+            <div class="col-md-6" style="text-align: end;">
+                <h5>Last Login Date</h5>
+                <p><?php echo $last_login_time; ?></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding-top: 2%;">
         <div class="row">
             <div class="col-md-3">
                 <div class="card text-center text-white bg-secondary">
@@ -210,17 +237,17 @@
     </div>
 
     <div id="Employers" class="container" style="padding-top: 2%;">
-        <div class="card border-info">
-            <div class="card-header bg-info" style="color: #fff;">ACL Electronics - User Management</div>
-            <div class="card-body text-info">
+        <div class="card border-primary">
+            <div class="card-header bg-primary" style="color: #fff;">ACL Electronics - User Management</div>
+            <div class="card-body text-primary">
                 <div class="row" style="text-align: center; color: #4C4B4B;">
                     <div class="col" style="text-align: left;">
                         <h2>User Management</h2>
                     </div>
                     <div class="col" style="text-align: right;">
-                        <a href="./manage-user.php" class="btn btn-info" style="color: #fff;"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Users Details</a>
+                        <a href="./manage-user.php" class="btn btn-primary" style="color: #fff;"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Users Details</a>
 
-                        <a href="./AddNewUser.html" class="btn btn-info" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New User</a>
+                        <a href="./AddNewUser.html" class="btn btn-primary" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New User</a>
                     </div>
                 </div>
                 <div class="row" style="padding-top: 2%;">
@@ -307,15 +334,15 @@
     </div>
 
     <div id="Defects" class="container" style="padding-top: 2%;">
-        <div class="card border-info">
-            <div class="card-header bg-info" style="color: #fff;">ACL Electronics - Defects Management</div>
-            <div class="card-body text-info">
+        <div class="card border-primary">
+            <div class="card-header bg-primary" style="color: #fff;">ACL Electronics - Defects Management</div>
+            <div class="card-body text-primary">
                 <div class="row" style="text-align: center; color: #4C4B4B;">
                     <div class="col" style="text-align: left;">
                         <h2>Defects Management</h2>
                     </div>
                     <div class="col" style="text-align: right;">
-                        <!-- <button type="button" id="btnExport" onclick="Export()" class="btn btn-info"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export as Report</button> -->
+                        <!-- <button type="button" id="btnExport" onclick="Export()" class="btn btn-primary"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export as Report</button> -->
                     </div>
                 </div>
                 <div class="row" style="padding-top: 2%;">
@@ -390,17 +417,17 @@
     </div>
 
     <div id="Machines" class="container" style="padding-top: 2%;">
-        <div class="card border-info">
-            <div class="card-header bg-info" style="color: #fff;">ACL Electronics - Machines Management</div>
-            <div class="card-body text-info">
+        <div class="card border-primary">
+            <div class="card-header bg-primary" style="color: #fff;">ACL Electronics - Machines Management</div>
+            <div class="card-body text-primary">
                 <div class="row" style="text-align: center; color: #4C4B4B;">
                     <div class="col" style="text-align: left;">
                         <h2>Machines</h2>
                     </div>
                     <div class="col" style="text-align: right;">
-                        <a href="./manage-machine.php" class="btn btn-info" style="color: #fff;"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Machine Details</a>
+                        <a href="./manage-machine.php" class="btn btn-primary" style="color: #fff;"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Machine Details</a>
 
-                        <a href="./AddNewMachine.html" class="btn btn-info" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New Machine</a>
+                        <a href="./AddNewMachine.html" class="btn btn-primary" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New Machine</a>
                     </div>
                 </div>
                 <div class="row" style="padding-top: 2%;">
@@ -455,15 +482,15 @@
     </div>
 
     <div id="Logs" class="container" style="padding-top: 2%;">
-        <div class="card border-info">
-            <div class="card-header bg-info" style="color: #fff;">ACL Electronics - Logs Management</div>
-            <div class="card-body text-info">
+        <div class="card border-primary">
+            <div class="card-header bg-primary" style="color: #fff;">ACL Electronics - Logs Management</div>
+            <div class="card-body text-primary">
                 <div class="row" style="text-align: center; color: #4C4B4B;">
                     <div class="col" style="text-align: left;">
                         <h2>Logs Management</h2>
                     </div>
                     <div class="col" style="text-align: right;">
-                        <!-- <a href="./AddNewUser.html" class="btn btn-info" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New User</a> -->
+                        <!-- <a href="./AddNewUser.html" class="btn btn-primary" style="color: #fff;"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New User</a> -->
                     </div>
                 </div>
                 <div class="row" style="padding-top: 2%;">
@@ -534,7 +561,7 @@
 
     <div style="padding-top: 5%;">
     </div>
-    <div style="background-color: #0dcaf0; text-align: center; margin: 0px; padding: 2%;">
+    <div style="background-color: #005DAA; text-align: center; margin: 0px; padding: 2%;">
         <p style="color: #fff; font-size: 13px;">ACL Electronics Sri Lanka 2021 - All Rights Reserved</p>
     </div>
 </body>

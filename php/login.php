@@ -27,12 +27,18 @@
             }
 
             if ($UserType == "Admin") {
+                session_start();
+                $_SESSION['login_user'] = $myusername;
                 header("Location: ../Administrator/index.php");
             }
             if ($UserType == "Manager") {
+                session_start();
+                $_SESSION['login_user'] = $myusername;
                 header("Location: ../pages/manager/index.php");
             }
             if ($UserType == "Supervisor") {
+                session_start();
+                $_SESSION['login_user'] = $myusername;
                 header("Location: ../pages/supervisor/index.php");
             }
             if ($UserType == "Intern Trainee" || $UserType == "Minor Employee") {

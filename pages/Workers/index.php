@@ -37,6 +37,9 @@ include('../../php/Session.php');
                         <!-- <a class="nav-item nav-link">Login User Name: <?php echo $login_session; ?> </a> -->
                     </li>
                     <li class="nav-item">
+                        <a class="nav-item nav-link active" href="./index.php"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-item nav-link active" href="./profile.php"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a>
                     </li>
                     <li class="nav-item">
