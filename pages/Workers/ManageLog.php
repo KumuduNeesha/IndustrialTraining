@@ -179,11 +179,11 @@ include('../../php/Session.php');
         var n = d.toLocaleTimeString();
         document.getElementById("lastLoginTime").innerHTML = n;
 
-        function Export() {
-            $("#tblCustomers").table2excel({
-                filename: "Table.xls"
-            });
-        }
+        // function Export() {
+        //     $("#tblCustomers").table2excel({
+        //         filename: "Table.xls"
+        //     });
+        // }
 
         function addLog() {
             window.open("./addLog.php", "_self");

@@ -127,7 +127,7 @@ include('../../php/Session.php');
                         <div class="row">
                             <div class="col-md-12">
                                 <div style="max-height: 250px; overflow-x: auto;">
-                                    <table id="tblCustomers" class="table table-hover">
+                                    <table id="tblDefects" class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Defect ID</th>
@@ -137,6 +137,7 @@ include('../../php/Session.php');
                                                 <th scope="col">Product</th>
                                                 <th scope="col">Quantity</th>
                                                 <th scope="col">Status</th>
+                                                <th scope="col">Supervisor Name</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -148,7 +149,7 @@ include('../../php/Session.php');
                                                 echo "Database connection failed.";
                                             }
 
-                                            $query = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty, d.status FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id && u.fullname = '$login_session' ORDER BY defect_id DESC";
+                                            $query = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty, d.status, d.supervisor FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id && u.fullname = '$login_session' ORDER BY defect_id DESC";
                                             $res = mysqli_query($connection, $query);
                                             while ($row = mysqli_fetch_array($res)) {
                                                 $defNumber = "Def-" . $row["defect_id"];
@@ -173,6 +174,9 @@ include('../../php/Session.php');
                                                 echo "</td>";
                                                 echo "<td>";
                                                 echo $row["status"];
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo $row["supervisor"];
                                                 echo "</td>";
                                             }
                                             mysqli_close($connection);
@@ -216,57 +220,43 @@ include('../../php/Session.php');
                                         <div class="form-group">
                                             <label for="formGroupExampleInput2">Reason</label>
                                             <select class="form-control" id="reason" name="reason" required>
-                                                <option>--</option>
-                                                <option value="1">BUBBLES VOIDS</option>
-                                                <option value="2">BURN MARKS</option>
-                                                <option value="3">DISCOLORATION</option>
-                                                <option value="4">DISTORTION UPON EJECTION</option>
-                                                <option value="5">ERRATIC SCREW RETRACTION</option>
-                                                <option value="6">FLASH</option>
-                                                <option value="7">FLOW MARK</option>
-                                                <option value="8">PIN MARK</option>
-                                                <option value="9">LAMINATION</option>
-                                                <option value="10">NOZZLE DROOL</option>
-                                                <option value="11">PART STICKING IN MOULD</option>
-                                                <option value="12">POOR WELD LINES</option>
-                                                <option value="13">SHORT SHOTS</option>
-                                                <option value="14">SHOT TO SHOOT VARIATION</option>
-                                                <option value="15">SINK MARK</option>
-                                                <option value="16">MOISTURE MARK</option>
-                                                <option value="17">RUNNER STICKING</option>
-                                                <option value="18">UNMELTED PELLET</option>
-                                                <option value="19">WARPAGE</option>
+                                                <option disabled selected>- Select Reason -</option>
+                                                <?php
+                                                include "../../php/DBConnection.php";  // Using database connection file here
+                                                $records = mysqli_query($db, "SELECT `reason_id`,`reason` FROM `reason` ORDER BY reason ASC;");  // Use select query here 
+
+                                                while ($data = mysqli_fetch_array($records)) {
+                                                    echo "<option value='" . $data['reason_id'] . "'>" . $data['reason'] . "</option>";  // displaying data in option menu
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput2">Machine ID</label>
                                             <select class="form-control" id="mid" name="mid" required>
-                                                <option>--</option>
-                                                <option value="1">Machine-Local-01</option>
-                                                <option value="2">Machine-Local-02</option>
-                                                <option value="3">Machine-Local-03</option>
-                                                <option value="4">Machine-Local-04</option>
-                                                <option value="5">Machine-Local-05</option>
-                                                <option value="6">Machine-Local-06</option>
+                                                <option disabled selected>- Select Machine -</option>
+                                                <?php
+                                                include "../../php/DBConnection.php";  // Using database connection file here
+                                                $records = mysqli_query($db, "SELECT `machine_id`,`machine_name`,`machine_type` FROM `machine` ORDER BY machine_name ASC;");  // Use select query here 
+
+                                                while ($data = mysqli_fetch_array($records)) {
+                                                    echo "<option value='" . $data['machine_id'] . "'>" . $data['machine_name'] . " - " . $data['machine_type'] ."</option>";  // displaying data in option menu
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput2">Product Name</label>
                                             <select class="form-control" id="pid" name="pid" required>
-                                                <option>--</option>
-                                                <option value="1">1 GANG 1 WAY SWITCH</option>
-                                                <option value="2">2 GANG 1 WAY SWITCH</option>
-                                                <option value="3">3 GANG 1 WAY SWITCH</option>
-                                                <option value="4">4 GANG 1 WAY SWITCH</option>
-                                                <option value="5">5 GANG 1 WAY SWITCH</option>
-                                                <option value="6">1 GANG 2 WAY SWITCH</option>
-                                                <option value="7">2 GANG 2 WAY SWITCH</option>
-                                                <option value="8">3 GANG 2 WAY SWITCH</option>
-                                                <option value="9">DOUBLE POLE SWITCH</option>
-                                                <option value="10">1 GANG BELL PRESS</option>
-                                                <option value="11">LIGHT DIMMER</option>
-                                                <option value="12">FAN SPEED CONTROLLER</option>
-                                                <option value="13">5 STEP FAN CONTROLLER</option>
+                                                <option disabled selected>- Select Product Name -</option>
+                                                <?php
+                                                include "../../php/DBConnection.php";  // Using database connection file here
+                                                $records = mysqli_query($db, "SELECT `product_id`,`product_code`,`name` FROM `products` ORDER BY name ASC;");  // Use select query here 
+
+                                                while ($data = mysqli_fetch_array($records)) {
+                                                    echo "<option value='" . $data['product_id'] . "'>" . $data['product_code'] . " - " . $data['name'] . "</option>";  // displaying data in option menu
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -277,6 +267,20 @@ include('../../php/Session.php');
                                             <label for="formGroupExampleInput2">Quantity</label>
                                             <input type="number" class="form-control" placeholder="Quantity" id="qty" name="qty" required>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Supervisor Name</label>
+                                            <select class="form-control" id="supid" name="supid" required>
+                                                <option disabled selected>- Select Supervisor Name -</option>
+                                                <?php
+                                                include "../../php/DBConnection.php";  // Using database connection file here
+                                                $records = mysqli_query($db, "SELECT `fullname` FROM `users` WHERE `role` = 'Supervisor' ORDER BY fullname ASC;");  // Use select query here 
+
+                                                while ($data = mysqli_fetch_array($records)) {
+                                                    echo "<option value='" . $data['fullname'] . "'>" . $data['fullname'] . "</option>";  // displaying data in option menu
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5%;">
@@ -286,6 +290,7 @@ include('../../php/Session.php');
                                     </div>
                                 </div>
                             </form>
+                            <?php mysqli_close($db);  // close connection ?>
                         </div>
                     </div>
                 </div>
@@ -304,11 +309,11 @@ include('../../php/Session.php');
         var n = d.toLocaleTimeString();
         document.getElementById("lastLoginTime").innerHTML = n;
 
-        function Export() {
-            $("#tblCustomers").table2excel({
-                filename: "Table.xls"
-            });
-        }
+        // function Export() {
+        //     $("#tblCustomers").table2excel({
+        //         filename: "Table.xls"
+        //     });
+        // }
 
         function dashboard() {
             window.open("./index.php", "_self");

@@ -33,7 +33,7 @@
         <input type="text" id="login" class="fadeIn second" name="user" id="user" placeholder="Username">
         <input type="text" id="password" class="fadeIn third" name="pass" id="pass" placeholder="Password">
         <br>
-        <input type="checkbox" class="form-check-input" id="formcheckbox" required>
+        <input type="checkbox" class="form-check-input" id="formcheckbox">
         <label class="form-check-label" for="exampleCheck1" style="color: #fff;">Remember me</label>
         <br><br>
         <input type="submit" class="fadeIn fourth" value="Log In">

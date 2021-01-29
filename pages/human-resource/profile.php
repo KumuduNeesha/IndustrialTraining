@@ -30,11 +30,11 @@ include('../../php/Session.php');
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 60%;">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left:50%;">
                 <ul class="nav navbar-nav ml-auto">
                     <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only"></span></a> -->
                     <li class="nav-item">
-                        <!-- <a class="nav-item nav-link">Login User Name: <?php echo $login_session; ?> </a> -->
+                        <a class="nav-item nav-link active" href="./calender.html"><i class="fa fa-calendar" aria-hidden="true"></i> Calender</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-item nav-link active" href="./index.php"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>

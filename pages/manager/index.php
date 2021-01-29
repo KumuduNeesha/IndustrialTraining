@@ -302,7 +302,7 @@ include('../../php/Session.php');
                         <h2>Defects Management</h2>
                     </div>
                     <div class="col" style="text-align: right;">
-                        <input type="button" id="btnExport" style="color: #fff;" class="btn btn-primary" value="Export as Excel" onclick="Export()" />
+                        <!-- <input type="button" id="btnExport" style="color: #fff;" class="btn btn-primary" value="Export as Excel" onclick="Export()" /> -->
                     </div>
                 </div>
                 <div class="row" style="padding-top: 2%;">
@@ -321,6 +321,7 @@ include('../../php/Session.php');
                                                 <th scope="col">Product</th>
                                                 <th scope="col">Quantity</th>
                                                 <th scope="col">Status</th>
+                                                <th scope="col">Supervisor Name</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -332,7 +333,7 @@ include('../../php/Session.php');
                                                 echo "Database connection failed.";
                                             }
 
-                                            $query = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty, d.status FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id && d.status = 'Authorized' ORDER BY defect_id DESC";
+                                            $query = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty, d.status, d.supervisor FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id && d.status = 'Authorized' ORDER BY defect_id DESC";
                                             $res = mysqli_query($connection, $query);
                                             while ($row = mysqli_fetch_array($res)) {
                                                 $defNumber = "Def-" . $row["defect_id"];
@@ -361,6 +362,9 @@ include('../../php/Session.php');
                                                 echo "<td>";
                                                 echo $row["status"];
                                                 echo "</td>";
+                                                echo "<td>";
+                                                echo $row["supervisor"];
+                                                echo "</td>";
                                             }
                                             mysqli_close($connection);
                                             ?>
@@ -385,7 +389,7 @@ include('../../php/Session.php');
                         <h2>Logs Management</h2>
                     </div>
                     <div class="col" style="text-align: right;">
-                        <input type="button" id="btnExport" style="color: #fff;" class="btn btn-primary" value="Export as Excel" onclick="Export()" />
+                        <!-- <input type="button" id="btnExport" style="color: #fff;" class="btn btn-primary" value="Export as Excel" onclick="Export()" /> -->
                     </div>
                 </div>
                 <div class="row" style="padding-top: 2%;">
@@ -466,11 +470,11 @@ include('../../php/Session.php');
         var n = d.toLocaleTimeString();
         document.getElementById("lastLoginTime").innerHTML = n;
 
-        function Export() {
-            $("#tblCustomers").table2excel({
-                filename: "Table.xls"
-            });
-        }
+        // function Export() {
+        //     $("#tblCustomers").table2excel({
+        //         filename: "Table.xls"
+        //     });
+        // }
     </script>
 </body>
 

@@ -41,6 +41,11 @@
                 $_SESSION['login_user'] = $myusername;
                 header("Location: ../pages/supervisor/index.php");
             }
+            if ($UserType == "HRM") {
+                session_start();
+                $_SESSION['login_user'] = $myusername;
+                header("Location: ../pages/human-resource/index.php");
+            }
             if ($UserType == "Intern Trainee" || $UserType == "Minor Employee") {
                 session_start();
                 $_SESSION['login_user'] = $myusername;

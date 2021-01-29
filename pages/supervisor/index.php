@@ -212,7 +212,7 @@ include('../../php/Session.php');
                                         echo "Database connection failed.";
                                     }
                                     $total = 0;
-                                    $query = "SELECT defect_id FROM defect";
+                                    $query = "SELECT `defect_id` FROM `defect` WHERE `supervisor` = '$login_session';";
                                     $res = mysqli_query($connection, $query);
                                     while ($row = mysqli_fetch_array($res)) {
                                         $total = $total + 1;
@@ -246,7 +246,7 @@ include('../../php/Session.php');
                         <h2>Defects Management</h2>
                     </div>
                     <div class="col" style="text-align: right;">
-                        <input type="button" id="btnExport" style="color: #fff;" class="btn btn-primary" value="Export as Excel" onclick="Export()" />
+                        <!-- <input type="button" id="btnExport" style="color: #fff;" class="btn btn-primary" value="Export as Excel" onclick="Export()" /> -->
                         <!-- <button type="button" id="btnExport" onclick="Export()" style="color: #fff;" class="btn btn-primary"><i class="fa fa-cloud-download" aria-hidden="true"></i> Export as Report</button> -->
                         <button type="button" id="btnExport" onclick="Manage()" style="color: #fff;" class="btn btn-primary"><i class="fa fa-pencil-square" aria-hidden="true"></i> Manage Defects</button>
                     </div>
@@ -278,7 +278,7 @@ include('../../php/Session.php');
                                                 echo "Database connection failed.";
                                             }
 
-                                            $query = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty, d.status FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id GROUP BY defect_id DESC ORDER BY status DESC";
+                                            $query = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty, d.status FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id && d.supervisor = '$login_session' GROUP BY defect_id DESC ORDER BY status DESC";
                                             $res = mysqli_query($connection, $query);
                                             while ($row = mysqli_fetch_array($res)) {
                                                 $defNumber = "Def-" . $row["defect_id"];
@@ -331,7 +331,7 @@ include('../../php/Session.php');
                         <h2>Logs Management</h2>
                     </div>
                     <div class="col" style="text-align: right;">
-                        <input type="button" id="btnExport" style="color: #fff;" class="btn btn-primary" value="Export as Excel" onclick="Export()" />
+                        <!-- <input type="button" id="btnExport" style="color: #fff;" class="btn btn-primary" value="Export as Excel" onclick="Export()" /> -->
                     </div>
                 </div>
                 <div class="row" style="padding-top: 2%;">
@@ -416,11 +416,11 @@ include('../../php/Session.php');
             window.open("./manage-defects.php", "_self");
         }
 
-        function Export() {
-            $("#tblCustomers").table2excel({
-                filename: "Table.xls"
-            });
-        }
+        // function Export() {
+        //     $("#tblCustomers").table2excel({
+        //         filename: "Table.xls"
+        //     });
+        // }
     </script>
 </body>
 

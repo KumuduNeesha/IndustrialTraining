@@ -85,7 +85,7 @@ include('../../php/Session.php');
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Full Name</label>
-                                                <input type="text" class="form-control" value="<?php echo $login_session; ?>" id="name" name="name" placeholder="Name" required>
+                                                <input type="text" class="form-control" value="<?php echo $login_session; ?>" id="name" name="name" placeholder="Name" required disabled>
                                             </div>
                                         </div>
                                     </div>

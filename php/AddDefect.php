@@ -15,8 +15,9 @@ if ($con->connect_error) {
     $date = $_POST['date'];
     $product_id = $_POST['pid'];
     $itemQty = $_POST['qty'];
+    $supervisor = $_POST['supid'];
 
-    $sql = "INSERT INTO `defect`(`reason_id`, `worker_id`, `machine_id`, `date`, `product_id`, `itemQty`) VALUES ('$reason_id', '$worker_id', '$machine_id', '$date', '$product_id', '$itemQty')";
+    $sql = "INSERT INTO `defect`(`reason_id`, `worker_id`, `machine_id`, `date`, `product_id`, `itemQty`, `supervisor`) VALUES ('$reason_id', '$worker_id', '$machine_id', '$date', '$product_id', '$itemQty', '$supervisor')";
 }
 
 if ($con->query($sql)) {

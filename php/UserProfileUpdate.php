@@ -19,7 +19,7 @@ $residence = $_POST['residence'];
 $phone = $_POST['phone'];
 $password_id = $_POST['password'];
 
-$sql = "UPDATE `users` SET `fullname`='$name',`age`='$age',`residence`='$residence',`phone`='$phone',`password_id`='$password_id' WHERE `worker_id`= '$uid'";
+$sql = "UPDATE `users` SET `age`='$age',`residence`='$residence',`phone`='$phone',`password_id`='$password_id' WHERE `worker_id`= '$uid'";
 
 if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";

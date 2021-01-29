@@ -1,3 +1,6 @@
+<?php
+include('../../php/Session.php');
+?>
 <html>
 
 <head lang="en">
@@ -86,7 +89,7 @@
                                                 echo "Database connection failed.";
                                             }
 
-                                            $query = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty, d.status FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id && d.status = 'Unauthorized' ORDER BY defect_id DESC";
+                                            $query = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty, d.status FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id && d.status = 'Unauthorized' && d.supervisor = '$login_session' ORDER BY defect_id DESC";
                                             $res = mysqli_query($connection, $query);
                                             while ($row = mysqli_fetch_array($res)) {
                                                 $defNumber = "Def-" . $row["defect_id"];
@@ -170,7 +173,7 @@
                                                 echo "Database connection failed.";
                                             }
 
-                                            $query2 = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty, d.status FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id && d.status = 'Authorized' ORDER BY defect_id DESC";
+                                            $query2 = "SELECT d.defect_id, r.reason, u.fullname, m.machine_name, d.date, p.name, d.itemQty, d.status FROM defect d, reason r, users u, machine m, products p WHERE d.reason_id = r.reason_id && d.worker_id = u.worker_id && d.machine_id = m.machine_id && d.product_id = p.product_id && d.status = 'Authorized' && d.supervisor = '$login_session' ORDER BY defect_id DESC";
                                             $res2 = mysqli_query($connection2, $query2);
                                             while ($row = mysqli_fetch_array($res2)) {
                                                 $defNumber = "Def-" . $row["defect_id"];
